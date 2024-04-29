@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
     const char *Commands[] = {"yaz:", "sil:", "sonagit:", "dur:"};
     bool yaz = false, sil = false, sonagit = false, dur = false, SyntaxError = false;
     int result; // it used to compare txts while checking the commands
-      char *filename;
+     char *filename;
       char *outPutFilename;
 
     FILE  *outputFile;
@@ -131,7 +131,6 @@ int main(int argc, char **argv) {
         char* delchar;//the character will be deleted
         int sayac=0; // 
         int control = 0;//let the cursor look 2 times for the node because the cursor maybe at the 2nd loop and it will not make him able to look to all the nodes  
-        Dllist TmpLsil;
          dll_traverse(node, lsil) {
             if(sayac %2 == 0)
                 times=atoi(jval_s(node->val));
@@ -162,9 +161,13 @@ int main(int argc, char **argv) {
                       {
                              tmp = cursor ;
                             cursor=cursor->flink;
+                            free(jval_s(tmp->val));
+                            tmp->val.s=NULL;
                             dll_delete_node(tmp);
                             tmp = cursor;
                             cursor=cursor->blink;
+                            free(jval_s(tmp->val));
+                            tmp->val.s=NULL;
                             dll_delete_node(tmp);
                             break;
                       }
@@ -180,10 +183,15 @@ int main(int argc, char **argv) {
                               times -=  ChrTime;
                                 tmp = cursor ;
                             cursor=cursor->flink;
+                            free(jval_s(tmp->val));
+                            tmp->val.s=NULL;
                             dll_delete_node(tmp);
                             tmp = cursor;
                             cursor=cursor->blink;
+                            free(jval_s(tmp->val));
+                            tmp->val.s=NULL;
                             dll_delete_node(tmp);
+                            
                       }
                     }
                      else{
@@ -198,15 +206,14 @@ int main(int argc, char **argv) {
                 }
             }
             sayac++;
-
         }
         }
         //Freeing the dll sil list
     dll_traverse(node, lsil) {  
         free(jval_s(node->val));
+        node->val.s=NULL;
     }
     free_dllist(lsil);
-
     }
    
     //if their is not any syntax error in the file do the print 
@@ -247,6 +254,10 @@ int main(int argc, char **argv) {
     fprintf(outputFile, "%s", outputStr);
     // Close the output file
     fclose(outputFile);
+    //Freeing the outputStr
+    free(outputStr);
+    outputStr=NULL;
+
     }
     else
     {
@@ -255,12 +266,16 @@ int main(int argc, char **argv) {
     // Free up dllists and inputstruct resources
     dll_traverse(node, l) {
         free(jval_s(node->val));
+        node->val.s=NULL;
     }
     free_dllist(l);
     jettison_inputstruct(is);
     free(cursor);
     free(NPtr);
-
-
+    cursor= NULL;
+    NPtr=NULL;
+    l=NULL;
+    lsil=NULL;
+    is=NULL;
     return 0;
 }
