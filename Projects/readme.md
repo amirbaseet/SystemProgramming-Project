@@ -2,7 +2,7 @@
 
 ## Proje Ekibi
 - AMRO MOUSA ISMAIL BASEET (Öğrenci Numarası: G211210578)
-- Öğrenci 2 (Lina Elsavadi: G201210570)
+- Lina Elsavadi (Öğrenci Numarası: G201210570)
 
 ## Proje Tanımı
 Bu proje, bir giriş dosyasından komutlar okuyarak bu komutlara göre bir çıkış dosyası oluşturan bir C programı geliştirmeyi içermektedir. Program, proje talimatlarında belirtilen özel biçimlendirmeleri ve özel karakterleri işlemekle yükümlüdür. Ayrıca, verilen sayıda karakteri tekrar edecek şekilde çıkış dosyasında karakter yazma işlemi de gerçekleştirecektir. Bu, giriş dosyasında belirtilen talimatlara göre dinamik olarak gerçekleştirilecektir.
