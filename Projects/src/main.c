@@ -203,8 +203,12 @@ int main(int argc, char **argv) {
                         if(cursor->val.s == NULL)
                             control++;
                      }
+                     
                 }
+                if(cursor->val.s==NULL)
+                 cursor = l-> blink;
             }
+            
             sayac++;
         }
         }
