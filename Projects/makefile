@@ -6,11 +6,22 @@ INCLUDE = -I$(CLASSDIR)/include
 LIBS = $(CLASSDIR)/lib/libfdr.a
 CC = gcc
 
-EX  =  bin/main 
-       
-all: $(EX) 
+EX = bin/main
 
-clean: 
+# Default file paths set to null or an empty string
+FILE1 ?= ""
+FILE2 ?= ""
+
+all: $(EX)
+ifeq ($(FILE1), "")
+	./$(EX)
+else ifeq ($(FILE2), "")
+	./$(EX) $(FILE1)
+else
+	./$(EX) $(FILE1) $(FILE2)
+endif
+
+clean:
 	rm -f bin/*
 
 bin/main: src/main.c $(LIBS)

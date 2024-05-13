@@ -37,17 +37,30 @@ int main(int argc, char **argv) {
     if (argc > 1) {
         filename = argv[1];
         printf("Input file provided: %s\n", filename);
+        
+        if(strstr(filename,".dat")==NULL){
+         fprintf(stderr,"ERROR input file should be .dat \n");
+        printf("You haven't entered the input file properly; it will be set automatically to 'txt/input.dat'\n");
+	  filename = "txt/input.dat";  // Default input file
+	}
     } else {
-        printf("You haven't entered the input file; it will be set automatically to 'txt/input.txt'\n");
-        filename = "txt/input.txt";  // Default input file
+        printf("You haven't entered the input file; it will be set automatically to 'txt/input.dat'\n");
+        filename = "txt/input.dat";  // Default input file
     }
 
     if (argc > 2) {
         outPutFilename = argv[2];
         printf("Output file provided: %s\n", outPutFilename);
+        
+         if(strstr(outPutFilename,".dat")==NULL){
+        fprintf(stderr,"ERROR output file should be .dat \n");
+         printf("You haven't entered the output file properly; it will be set automatically to 'txt/output.dat'\n");
+        outPutFilename = "txt/output.dat";  // Default output file
+       
+        }
     } else {
-        printf("You haven't entered the output file; it will be set automatically to 'txt/output.txt'\n");
-        outPutFilename = "txt/output.txt";  // Default output file
+        printf("You haven't entered the output file; it will be set automatically to 'txt/output.dat'\n");
+        outPutFilename = "txt/output.dat";  // Default output file
     }  
    
     is = new_inputstruct(filename);
