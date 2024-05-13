@@ -23,15 +23,15 @@ Projeyi derlemeden önce `libfdr` kütüphanesinin yüklü olduğundan emin olun
 
 ### Projeyi Derleme
 Projeyi derlemek için terminalde aşağıdaki komutu çalıştırın:
-bin/main
-ya da
-bin/main txt/input.txt txt/output.txt
+- **Dosya isimleri girmeden Derlemesi :** make
+- **Giris Dosya isimi girerek Derlemesi:** make FILE1="txt/input.dat"
+- **Giris ve Cikis Dosya isimi girerek Derlemesi:** make FILE1="txt/input.dat" FILE2="txt/output.dat"
 
 Dosya isimleri verilmezse, program isimleri sorar veya öntanımlı isimleri kullanır.
 
 ## Örnek Giriş/Çıkış
-- **Giriş Dosyası:** `txt/input.txt`
-- **Çıkış Dosyası:** `txt/output.txt`
+- **Giriş Dosyası:** `txt/input.dat`
+- **Çıkış Dosyası:** `txt/output.dat`
 Örnek içerikler için projeye dahil edilen dosyalara bakınız.
 
 ## Ek Dokümantasyon
